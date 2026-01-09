@@ -1,11 +1,10 @@
-// MAIN ENTRY POINT
-
 // backend/server.js
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import connectDB from './config/database.js';
 import { errorHandler, notFound } from './middleware/errorHandler.js';
+import preferenceRoutes from './routes/preferenceRoutes.js';
 import weatherRoutes from './routes/weatherRoutes.js';
 
 // Load environment variables
@@ -43,6 +42,7 @@ app.get('/health', (req, res) => {
 
 // API Routes
 app.use('/api/weather', weatherRoutes);
+app.use('/api/preferences', preferenceRoutes);
 
 // Error handling
 app.use(notFound);

@@ -64,11 +64,11 @@ const userPreferenceSchema = new mongoose.Schema({
 });
 
 // Limit recent searches to 10 items
-userPreferenceSchema.pre('save', function(next) {
-  if (this.recentSearches.length > 10) {
+userPreferenceSchema.pre('save', function() {
+  // Synchronous hook: enforce a maximum of 10 recent searches
+  if (this.recentSearches && this.recentSearches.length > 10) {
     this.recentSearches = this.recentSearches.slice(-10);
   }
-  next();
 });
 
 const UserPreference = mongoose.model('UserPreference', userPreferenceSchema);
