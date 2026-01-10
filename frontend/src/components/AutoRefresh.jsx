@@ -54,9 +54,9 @@ const AutoRefresh = ({ onRefresh, interval = 600000 }) => { // Default 10 minute
         <RefreshCw className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
         <span className="text-sm font-medium">Refresh</span>
       </button>
-      <div className="h-6 w-px bg-gray-300"></div>
-      <div className="text-sm text-gray-600">
-        Next: <span className="font-semibold text-gray-800">{formatTime(timeLeft)}</span>
+      <div className="h-10 w-px bg-black-300"></div>
+      <div className="text-sm text-gray-900">
+        Next: <span className="font-semibold text-gray-900">{formatTime(timeLeft)}</span>
       </div>
     </div>
   );

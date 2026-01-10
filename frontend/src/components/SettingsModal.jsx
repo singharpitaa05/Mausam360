@@ -22,10 +22,10 @@ const SettingsModal = ({ isOpen, onClose, preferences, onSave }) => {
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b">
+        <div className="flex items-center justify-between p-8 border-b">
           <div className="flex items-center gap-3">
-            <div className="bg-blue-100 p-2 rounded-xl">
-              <Settings className="w-6 h-6 text-blue-600" />
+            <div className="bg-blue-100 p-5 rounded-xl">
+              <Settings className="w-10 h-10 text-blue-600" />
             </div>
             <h2 className="text-2xl font-bold text-gray-800">Settings</h2>
           </div>
@@ -33,15 +33,15 @@ const SettingsModal = ({ isOpen, onClose, preferences, onSave }) => {
             onClick={onClose}
             className="text-gray-400 hover:text-gray-600 p-2 rounded-lg hover:bg-gray-100 transition-all"
           >
-            <X className="w-6 h-6" />
+            <X className="w-10 h-6" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-6">
+        <div className="p-5 space-y-5">
           {/* Default City */}
           <div>
-            <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-3">
+            <label className="flex items-center gap-2 text-sm font-semibold text-gray-800 mb-3">
               <MapPin className="w-4 h-4 text-blue-500" />
               Default City
             </label>

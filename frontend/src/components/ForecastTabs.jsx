@@ -12,7 +12,7 @@ const ForecastTabs = ({ activeTab, onTabChange }) => {
 
   return (
     <div className="w-full mb-8">
-      <div className="glass-card p-2 flex gap-2 inline-flex w-full sm:w-auto">
+      <div className="glass-card p-2 flex gap-2 w-full sm:w-auto">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -23,7 +23,7 @@ const ForecastTabs = ({ activeTab, onTabChange }) => {
               onClick={() => onTabChange(tab.id)}
               className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all ${
                 isActive
-                  ? 'bg-gradient-to-br from-accent-primary to-accent-tertiary text-dark-bg-primary shadow-lg transform scale-105'
+                  ? 'bg-linear-gradient-to-br from-accent-primary to-accent-tertiary text-dark-bg-primary shadow-lg transform scale-105'
                   : 'text-text-secondary hover:text-text-primary'
               }`}
             >

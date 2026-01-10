@@ -71,9 +71,9 @@ const SearchBar = ({ onSearch, loading }) => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto mb-8">
+    <div className="w-full max-w-2xl mx-auto mb-8">
       <form onSubmit={handleSubmit} className="relative">
-        <div className="relative flex items-center glass-card p-2">
+        <div className="relative flex items-center glass-card p-2 rounded-full">
           <MapPin className="absolute left-4 w-5 h-5 text-text-tertiary" />
           
           <input
