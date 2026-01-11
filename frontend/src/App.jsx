@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import AutoRefresh from './components/AutoRefresh.jsx';
 import EmptyState from './components/EmptyState.jsx';
 import ErrorMessage from './components/ErrorMessage.jsx';
+import Footer from './components/Footer.jsx';
 import ForecastTabs from './components/ForecastTabs.jsx';
 import Header from './components/Header.jsx';
 import HourlyForecast from './components/HourlyForecast.jsx';
@@ -382,6 +383,7 @@ function App() {
         preferences={preferences}
         onSave={handleSaveSettings}
       />
+      <Footer />
     </div>
   );
 }
