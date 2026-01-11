@@ -20,7 +20,7 @@ const SettingsModal = ({ isOpen, onClose, preferences, onSave }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full">
         {/* Header */}
         <div className="flex items-center justify-between p-8 border-b">
           <div className="flex items-center gap-3">
@@ -59,8 +59,8 @@ const SettingsModal = ({ isOpen, onClose, preferences, onSave }) => {
 
           {/* Temperature Unit */}
           <div>
-            <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 mb-3">
-              <Thermometer className="w-4 h-4 text-blue-500" />
+            <label className="flex items-center gap-2 text-m font-semibold text-gray-700 mb-3">
+              <Thermometer className="w-10 h-6 text-blue-500" />
               Temperature Unit
             </label>
             <div className="flex gap-3">

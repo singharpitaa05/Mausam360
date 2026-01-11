@@ -48,7 +48,7 @@ const WeatherCard = ({ weatherData, unit = 'celsius' }) => {
           <div className="flex flex-col gap-4">
             <div className="bg-linear-gradient-to-br from-gray-700 to-gray-800 px-6 py-4 flex items-center gap-4 rounded-lg">
               <div className="bg-linear-gradient-to-br from-yellow-400 to-yellow-600 p-3 rounded-lg text-white">
-                <Sunrise className="w-6 h-6" />
+                <Sunrise className="w-4 h-6" />
               </div>
               <div>
                 <div className="text-xs text-gray-400">Sunrise</div>
@@ -75,7 +75,7 @@ const WeatherCard = ({ weatherData, unit = 'celsius' }) => {
       {/* Weather Details Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
         {/* Humidity */}
-        <div className="bg-linear-gradient-to-br from-gray-700 to-gray-800 p-6 rounded-lg">
+        <div className="bg-linear-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-lg">
           <div className="flex items-center gap-3 mb-4">
             <div className="bg-linear-gradient-to-br from-blue-400 to-blue-600 p-3 rounded-lg text-white">
               <Droplets className="w-6 h-6" />

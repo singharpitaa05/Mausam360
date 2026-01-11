@@ -43,7 +43,7 @@ const HourlyForecast = ({ hourlyData, unit = 'celsius' }) => {
       <h3 className="text-2xl font-bold text-text-primary mb-6">Hourly Forecast</h3>
       
       {/* Chart */}
-      <div className="glass-card p-6 mb-6">
+      <div className="glass-card p-6 mb-10">
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />
@@ -93,7 +93,7 @@ const HourlyForecast = ({ hourlyData, unit = 'celsius' }) => {
             <img 
               src={getWeatherIconUrl(hour.icon)} 
               alt={hour.description}
-              className="w-12 h-12 mx-auto"
+              className="w-12 h-10 mx-auto"
             />
             
             <p className="text-2xl font-bold text-gradient mb-1">

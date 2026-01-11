@@ -8,7 +8,7 @@ const ErrorMessage = ({ message, onRetry }) => {
     <div className="w-full">
       <div className="glass-card border-2 border-red-500/30 p-8 text-center">
         <div className="flex justify-center mb-4">
-          <div className="bg-gradient-to-br from-red-500 to-red-600 p-4 rounded-full text-white shadow-lg">
+          <div className="bg-linear-gradient-to-br from-red-500 to-red-600 p-4 rounded-full text-white shadow-lg">
             <AlertCircle className="w-12 h-12" />
           </div>
         </div>

@@ -13,8 +13,8 @@ const RecentSearches = ({ recentSearches, onSelectCity, onClear, onClose }) => {
       <div className="glass-card p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
-            <div className="bg-gradient-to-br from-accent-primary to-accent-tertiary p-2 rounded-10 text-white">
-              <Clock className="w-5 h-5" />
+            <div className="bg-linear-gradient-to-br from-accent-primary to-accent-tertiary p-2 rounded-10 text-white">
+              <Clock className="w-10 h-5" />
             </div>
             <h3 className="text-lg font-semibold text-text-primary">Recent Searches</h3>
           </div>
@@ -44,7 +44,7 @@ const RecentSearches = ({ recentSearches, onSelectCity, onClear, onClose }) => {
               onClick={() => onSelectCity(search.cityName, search.coordinates)}
               className="flex items-center gap-2 glass-card px-4 py-2 rounded-lg hover:border-accent-primary transition-all group"
             >
-              <MapPin className="w-4 h-4 text-accent-primary group-hover:scale-110 transition-transform" />
+              <MapPin className="w-10 h-6 text-accent-primary group-hover:scale-110 transition-transform" />
               <span className="font-medium text-text-secondary group-hover:text-accent-primary transition-colors">{search.cityName}</span>
             </button>
           ))}

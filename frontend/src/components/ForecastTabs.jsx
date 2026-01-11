@@ -11,7 +11,7 @@ const ForecastTabs = ({ activeTab, onTabChange }) => {
   ];
 
   return (
-    <div className="w-full mb-8">
+    <div className="w-80 mb-8">
       <div className="glass-card p-2 flex gap-2 w-full sm:w-auto">
         {tabs.map((tab) => {
           const Icon = tab.icon;
@@ -27,7 +27,7 @@ const ForecastTabs = ({ activeTab, onTabChange }) => {
                   : 'text-text-secondary hover:text-text-primary'
               }`}
             >
-              <Icon className="w-5 h-5" />
+              <Icon className="w-10 h-6" />
               <span className="hidden sm:inline">{tab.label}</span>
             </button>
           );

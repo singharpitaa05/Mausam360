@@ -43,7 +43,7 @@ const WeeklyForecast = ({ weeklyData, unit = 'celsius' }) => {
 
   return (
     <div className="w-full">
-      <h3 className="text-2xl font-bold text-gray-800 mb-6">7-Day Forecast</h3>
+      <h3 className="text-2xl font-bold text-white mb-6">7-Day Forecast</h3>
       
       {/* Chart */}
       <div className="bg-white rounded-2xl p-6 shadow-lg mb-6">
@@ -64,6 +64,11 @@ const WeeklyForecast = ({ weeklyData, unit = 'celsius' }) => {
             <Bar dataKey="max" fill="#ef4444" name="Max Temp" radius={[8, 8, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
+      </div>
+
+      {/* Separator between chart and cards */}
+      <div className="my-12 flex justify-center">
+        <div className="w-80 h-px bg-white/200 rounded" />
       </div>
 
       {/* Weekly Cards */}
