@@ -8,7 +8,7 @@ const Header = ({ unit, onUnitChange, onOpenSettings }) => {
         {/* Logo Section */}
         <div className="logo-section">
           <div className="logo-icon">
-            <CloudSun className="w-6 h-6 text-white" />
+            <img src="/logo.svg" alt="Mausam360 Logo" className="w-10 h-10" />
           </div>
           <div className="logo-text">
             <h1>Mausam360</h1>
