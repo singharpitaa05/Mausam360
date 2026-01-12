@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 /**
  * Custom hook for browser geolocation
  * Returns coordinates, loading state, and error
+ * Fetches location asynchronously without blocking - times out after 3 seconds
  */
 export const useGeolocation = () => {
   const [location, setLocation] = useState(null);
@@ -20,9 +21,18 @@ export const useGeolocation = () => {
       return;
     }
 
-    // Get current position
+    // Set timeout to fail fast - mark as not loading after 3 seconds
+    const timeoutId = setTimeout(() => {
+      if (loading) {
+        setLoading(false);
+        console.log('⏱️ Geolocation timeout after 3s - showing default city');
+      }
+    }, 3000);
+
+    // Get current position - non-blocking with shorter timeout
     navigator.geolocation.getCurrentPosition(
       (position) => {
+        clearTimeout(timeoutId);
         setLocation({
           lat: position.coords.latitude,
           lon: position.coords.longitude
@@ -31,16 +41,19 @@ export const useGeolocation = () => {
         console.log('✅ Location detected:', position.coords);
       },
       (err) => {
+        clearTimeout(timeoutId);
         setError(err.message);
         setLoading(false);
-        console.log('⚠️ Location permission denied, using default city');
+        console.log('⚠️ Location permission denied or failed, using default city');
       },
       {
         enableHighAccuracy: false,
-        timeout: 5000,
-        maximumAge: 0
+        timeout: 3000, // Reduced timeout
+        maximumAge: 300000 // Cache location for 5 minutes
       }
     );
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return { location, loading, error };

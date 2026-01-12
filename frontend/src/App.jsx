@@ -28,6 +28,7 @@ function App() {
   const [activeTab, setActiveTab] = useState('current');
   const [showSettings, setShowSettings] = useState(false);
   const [lastFetchTime, setLastFetchTime] = useState(null);
+  const [searchedCity, setSearchedCity] = useState(null); // Track if user searched for a city
 
   // Get user location and preferences
   const { location, loading: locationLoading } = useGeolocation();
@@ -62,29 +63,33 @@ function App() {
     }
   }, []);
 
-  // Fetch initial weather on mount
+  // Fetch initial weather on mount - prioritize showing content quickly
   useEffect(() => {
     const fetchInitialWeather = async () => {
       try {
+        // Don't override if user has already searched for a city
+        if (searchedCity) return;
+
+        // Only wait for preferences to load (don't block on geolocation)
+        if (preferencesLoading) return;
+
         setLoading(true);
         setError(null);
 
-        // Wait for both location and preferences to load
-        if (locationLoading || preferencesLoading) return;
-
-        if (location) {
-          // Use detected location
-          console.log('📍 Fetching weather for detected location');
-          await fetchWeatherData(location.lat, location.lon);
-        } else if (preferences?.defaultCity) {
-          // Use default city from preferences
+        // Priority: 1) Preferences default city, 2) Geolocation, 3) Fallback
+        if (preferences?.defaultCity && !locationLoading) {
+          // Show default city from preferences first - fastest path
           console.log('📍 Using default city from preferences:', preferences.defaultCity.name);
           await fetchWeatherData(
             preferences.defaultCity.coordinates.lat,
             preferences.defaultCity.coordinates.lon
           );
+        } else if (location) {
+          // Use detected location if available
+          console.log('📍 Fetching weather for detected location');
+          await fetchWeatherData(location.lat, location.lon);
         } else {
-          // Final fallback
+          // Final fallback - show immediately without waiting
           console.log('📍 Using fallback city: New Delhi');
           const response = await getWeatherByCity('New Delhi');
           setWeatherData(response.data);
@@ -100,13 +105,14 @@ function App() {
     };
 
     fetchInitialWeather();
-  }, [location, locationLoading, preferences, preferencesLoading, fetchWeatherData]);
+  }, [location, locationLoading, preferences, preferencesLoading, fetchWeatherData, searchedCity]);
 
   // Handle city search
   const handleCitySearch = async (cityName) => {
     try {
       setSearchLoading(true);
       setError(null);
+      setSearchedCity(cityName); // Mark that user searched for this city
 
       console.log('🔍 Searching for city:', cityName);
       const response = await getWeatherByCity(cityName);
@@ -129,6 +135,7 @@ function App() {
       const parsedError = parseError(err);
       setError(parsedError.message);
       setSearchLoading(false);
+      setSearchedCity(null); // Reset on error
     }
   };
 
@@ -137,6 +144,7 @@ function App() {
     try {
       setSearchLoading(true);
       setError(null);
+      setSearchedCity(cityName); // Mark that user selected a recent search
 
       console.log('📍 Loading recent city:', cityName);
       await fetchWeatherData(coordinates.lat, coordinates.lon);
@@ -145,6 +153,7 @@ function App() {
       logError(err, 'Recent City Selection');
       setError(err.message);
       setSearchLoading(false);
+      setSearchedCity(null); // Reset on error
     }
   };
 
