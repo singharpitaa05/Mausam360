@@ -31,6 +31,21 @@ app.use((req, res, next) => {
   next();
 });
 
+// Root route - API documentation
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Mausam360 API v1.0.0',
+    description: 'A real-time weather application API',
+    endpoints: {
+      health: '/health',
+      weather: '/api/weather',
+      preferences: '/api/preferences'
+    },
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.status(200).json({
